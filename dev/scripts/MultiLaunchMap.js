@@ -76,10 +76,9 @@ class MultiLaunchMap extends React.Component {
                         })}
                     </select>
                     <input type="submit" value="Submit" />
-                </form>
-                <div>
-                    {/* <Map/> */}
-                </div>          
+                </form>          
+
+
             </div>
         )
     }
