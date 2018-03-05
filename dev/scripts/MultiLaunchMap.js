@@ -2,7 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import Qs from 'qs';
 import moment from 'moment';
+<<<<<<< HEAD
 import {Link} from 'react-router-dom';
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
 import MyMapComponent from './MyMapComponent';
 import {
     withScriptjs,
@@ -35,19 +39,33 @@ class MultiLaunchMap extends React.Component {
 
     componentDidMount() {
         axios.get(`https://api.spacexdata.com/v2/launches/`)
+<<<<<<< HEAD
         .then(({data}) => {
             const allRocketData = data;
             this.setState({
                 mapInfo: allRocketData,
             })
         });
+=======
+            .then(({ data }) => {
+                const allRocketData = data;
+                this.setState({
+                    mapInfo: allRocketData,
+                })
+            });
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
     }
 
     formSubmit(e) {
         e.preventDefault();
         // ONCE THIS ALERT IS TRIPPED ONCE, IT KEEPS TRIPPING ON EVERY SELECTION AFTER THAT. NEED TO FIX THIS IN ORDER TO ALLOW USER TO RESUBMIT A SEARCH!
+<<<<<<< HEAD
         this.state.startDate > this.state.endDate ? alert('Incorrect submission of date. Please check your selection again.') : null;   
         const slicedMapInfo = this.state.mapInfo.slice(this.state.startDate - 1,this.state.endDate);
+=======
+        this.state.startDate > this.state.endDate ? alert('Incorrect submission of date. Please check your selection again.') : null;
+        const slicedMapInfo = this.state.mapInfo.slice(this.state.startDate - 1, this.state.endDate);
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
         this.setState({
             userSelectMap: slicedMapInfo
         });
@@ -58,9 +76,36 @@ class MultiLaunchMap extends React.Component {
         Promise.all(userSelect).then((data) => {
             this.setState({
                 userSelectLocations: data.map((item) => {
+<<<<<<< HEAD
                     return item.data.results[0].geometry.location      
                 }),
             })
+=======
+                    return item.data.results[0].geometry.location
+                }),
+            })
+        })
+        this.setState({
+            generatedUserMap: true,
+        })
+    }
+
+    getGeoCoords(longName) {
+        return axios({
+            method: 'GET',
+            url: 'https://proxy.hackeryou.com',
+            dataResponse: 'json',
+            paramsSerializer: function (params) {
+                return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+                reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
+                params: {
+                    key: "AIzaSyDHH-sUXf3qfy-eySEqhbkLd38Zpw4G0Jw",
+                    query: longName,
+                }
+            }
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
         })
         this.setState({
             generatedUserMap: true,
@@ -99,7 +144,11 @@ class MultiLaunchMap extends React.Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <section>    
+=======
+            <section>
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
                 <div className="multi-launch-section">
                     <div className="wrapper">
                         <h2>SpaceX Launch Map</h2>
@@ -130,6 +179,7 @@ class MultiLaunchMap extends React.Component {
                 </div>
                 <div className="multi-launch-generated-map">
                     <div className="wrapper">
+<<<<<<< HEAD
                         {this.state.generatedUserMap 
                         ? <MyMapComponent
                             isMarkerShown
@@ -142,6 +192,20 @@ class MultiLaunchMap extends React.Component {
                         : null}
                     </div>
                 </div>              
+=======
+                        {this.state.generatedUserMap
+                            ? <MyMapComponent
+                                isMarkerShown
+                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAn79jm9LKEu4VsePWqln4WpmC_gEmgw&v=3.exp&libraries=geometry,drawing,places"
+                                loadingElement={<div style={{ height: `100%` }} />}
+                                containerElement={<div style={{ height: `400px` }} />}
+                                mapElement={<div style={{ height: `100%` }} />}
+                                selectedLocations={this.state.userSelectLocations}
+                            />
+                            : null}
+                    </div>
+                </div>
+>>>>>>> 812af462f10c7b54b648be5208877f85b246550d
             </section>
         )
     }
