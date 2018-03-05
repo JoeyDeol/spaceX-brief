@@ -8,6 +8,13 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import MyMapComponent from './MyMapComponent';
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
 
 class LandingPage extends React.Component {
   render() {
