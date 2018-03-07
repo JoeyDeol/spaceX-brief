@@ -83,24 +83,6 @@ class MultiLaunchMap extends React.Component {
         })
     }
 
-    getGeoCoords(longName) {
-        return axios({
-            method: 'GET',
-            url: 'https://proxy.hackeryou.com',
-            dataResponse: 'json',
-            paramsSerializer: function (params) {
-                return Qs.stringify(params, { arrayFormat: 'brackets' })
-            },
-            params: {
-                reqUrl: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
-                params: {
-                    key: "AIzaSyBLOA1LmeuBR4_8PiWQ1Y1OOlI4G1yAdGg",
-                    query: longName,
-                }
-            }
-        })   
-    }
-
     getStartDate(e) {
         this.setState({
             startDate: Number(e.target.value)
