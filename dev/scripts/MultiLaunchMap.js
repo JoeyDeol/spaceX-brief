@@ -156,10 +156,11 @@ class MultiLaunchMap extends React.Component {
                                         )
                                     })}
                                 </select>
-                                <input className="app-button draw" type="submit" value="Submit" />
+                                <input type="submit" value="Submit" />
                             </form>
                         </div>
                     </div>
+                    <Link to="/home"><i className="far fa-arrow-alt-circle-left"></i></Link>
                 </div>
                 <div className="multi-launch-generated-map">
                     <div className="wrapper">
@@ -175,7 +176,6 @@ class MultiLaunchMap extends React.Component {
                             : null}
                     </div>
                 </div>
-                <Link to="/home"><i className="far fa-arrow-alt-circle-left"></i></Link>
             </section>
         )
     }
